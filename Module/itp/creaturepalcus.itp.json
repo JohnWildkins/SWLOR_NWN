@@ -9240,6 +9240,25 @@
                       "type": "resref",
                       "value": "mynock"
                     }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "CR": {
+                      "type": "float",
+                      "value": 3.0
+                    },
+                    "FACTION": {
+                      "type": "cexostring",
+                      "value": "Hostile"
+                    },
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Rockeater Mynock"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "r_mynock"
+                    }
                   }
                 ]
               },

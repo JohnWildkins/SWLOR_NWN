@@ -54,6 +54,17 @@
                     "__struct_id": 0,
                     "NAME": {
                       "type": "cexostring",
+                      "value": "CZ-220 - Rockeater Mynocks"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "r_mynock_spwn"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
                       "value": "Hutlar - Animals"
                     },
                     "RESREF": {

@@ -5201,6 +5201,17 @@
                     "__struct_id": 0,
                     "NAME": {
                       "type": "cexostring",
+                      "value": "Rockeater Mynock Bite"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "r_mynock_bite"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
                       "value": "Sand Beetle Bite"
                     },
                     "RESREF": {
@@ -6854,6 +6865,17 @@
                     "RESREF": {
                       "type": "resref",
                       "value": "raivor_skin"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Rockeater Mynock Properties"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "r_mynock_prop"
                     }
                   },
                   {

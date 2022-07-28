@@ -14,6 +14,7 @@ namespace SWLOR.Game.Server.Feature.SpawnDefinition
             DroidSpawns(builder);
             MynockSpawns(builder);
             ColicoidExperimentSpawn(builder);
+            RockeaterMynockSpawns(builder);
 
             return builder.Build();
         }
@@ -47,6 +48,15 @@ namespace SWLOR.Game.Server.Feature.SpawnDefinition
         {
             builder.Create("CZ220_COLICOID_EXPERIMENT", "Colicoid Experiment")
                 .AddSpawn(ObjectType.Creature, "colicoidexp")
+                .WithFrequency(100)
+                .RandomlyWalks()
+                .ReturnsHome();
+        }
+
+        private void RockeaterMynockSpawns(SpawnTableBuilder builder)
+        {
+            builder.Create("CZ220_R_MYNOCKS", "CZ-220 Rockeater Mynocks")
+                .AddSpawn(ObjectType.Creature, "r_mynock")
                 .WithFrequency(100)
                 .RandomlyWalks()
                 .ReturnsHome();

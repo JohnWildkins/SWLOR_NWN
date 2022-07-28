@@ -132,6 +132,9 @@ namespace SWLOR.Game.Server.Service.KeyItemService
         MonCalaSharptoothJunglesMap = 59,
         [KeyItem(KeyItemCategoryType.Maps, "Mon Cala - Sharptooth Caverns Map", true, "Map of the Sharptooth Caverns on Mon Cala.")]
         MonCalaSharptoothCavernsMap = 60,
+
+        [KeyItem(KeyItemCategoryType.Keys, "CZ-220 Sublevel Access Key", true, "This unlocks the access elevator to CZ-220's sublevel, located in the starboard aft corner of the maintenance level.")]
+        CZ220SublevelKey = 61,
     }
 
     public class KeyItemAttribute : Attribute
