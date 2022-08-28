@@ -107,6 +107,7 @@ namespace SWLOR.Game.Server.Native
             dmgValues[CombatDamageType.Physical] = 0;
             var physicalDamage = 0;
             var foundDMG = false;
+            var weaponRank = 0;
 
             // Calculate attacker's base DMG
             var specializationDMGBonus = CalculateSpecializationDMG(attacker, weapon);
@@ -139,6 +140,9 @@ namespace SWLOR.Game.Server.Native
                         dmg += ip.m_nCostTableValue;
                         dmgValues[damageType] = dmg;
                         foundDMG = true;
+                    } else if (ip != null && ip.m_nPropertyName == (ushort)ItemPropertyType.UseLimitationPerk)
+                    {
+                        weaponRank = ip.m_nCostTableValue;
                     }
                 }
             }
@@ -149,6 +153,8 @@ namespace SWLOR.Game.Server.Native
                 // If no properties default to 1 physical.
                 dmgValues[CombatDamageType.Physical] = 1;
             }
+
+            weaponRank = Math.Max(weaponRank, 0);
 
             var attackerStatType = weapon == null
                 ? AbilityType.Might
@@ -235,7 +241,8 @@ namespace SWLOR.Game.Server.Native
                         attackerStat, 
                         defense,
                         defenderStat, 
-                        critical);
+                        critical,
+                        weaponRank);
 
                     // Apply droid bonus for electrical damage.
                     if (target.m_pStats.m_nRace == (ushort)RacialType.Robot && damageType == CombatDamageType.Electrical)

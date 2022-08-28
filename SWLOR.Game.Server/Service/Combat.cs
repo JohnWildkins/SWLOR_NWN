@@ -82,6 +82,7 @@ namespace SWLOR.Game.Server.Service
         /// <param name="defenderDefense">The defender's defense rating.</param>
         /// <param name="defenderStat">The defender's defend stat value</param>
         /// <param name="critical">the critical rating of the attack, or 0 if the attack is not critical.</param>
+        /// <param name="deltaRank">Weapon rank, for determining stat delta -- leave default (0) for normal delta handling (i.e. abilities)</param>
         /// <returns>A minimum and maximum damage range</returns>
         public static (int, int) CalculateDamageRange(
             int attackerAttack,
@@ -89,7 +90,8 @@ namespace SWLOR.Game.Server.Service
             int attackerStat,
             int defenderDefense,
             int defenderStat,
-            int critical)
+            int critical,
+            int deltaRank = 0)
         {
             const float RatioMax = 3.625f;
             const float RatioMin = 0.01f;
@@ -97,7 +99,7 @@ namespace SWLOR.Game.Server.Service
             if (defenderDefense < 1)
                 defenderDefense = 1;
 
-            var statDelta = attackerStat - defenderStat;
+            var statDelta = deltaRank > 0 ? Math.Clamp(attackerStat - defenderStat, -deltaRank, deltaRank + 8) : attackerStat - defenderStat;
             var baseDamage = attackerDMG + statDelta;
             var ratio = (float)attackerAttack / (float)defenderDefense;
 
@@ -194,6 +196,7 @@ namespace SWLOR.Game.Server.Service
         /// <param name="defenderDefense">The defender's defense rating.</param>
         /// <param name="defenderStat">The defender's defend stat value</param>
         /// <param name="critical">the critical rating of the attack, or 0 if the attack is not critical.</param>
+        /// <param name="deltaRank">Weapon rank, for determining stat delta -- leave default (0) for normal delta handling (i.e. abilities)</param>
         /// <returns>A damage value to apply to the target.</returns>
         public static int CalculateDamage(
             int attackerAttack,
@@ -201,7 +204,8 @@ namespace SWLOR.Game.Server.Service
             int attackerStat,
             int defenderDefense,
             int defenderStat,
-            int critical)
+            int critical,
+            int deltaRank = 0)
         {
             var (minDamage, maxDamage) = CalculateDamageRange(
                 attackerAttack,
@@ -209,7 +213,8 @@ namespace SWLOR.Game.Server.Service
                 attackerStat,
                 defenderDefense,
                 defenderStat,
-                critical);
+                critical,
+                deltaRank);
 
             return (int)Random.NextFloat(minDamage, maxDamage);
         }
